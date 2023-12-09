@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:weather/Weather/Weather.dart';
 
@@ -23,17 +24,57 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     // ignore: prefer_const_constructors
-    timer = Timer.periodic(Duration(seconds: 6), (timer) {
-      // ignore: avoid_print
-
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => WeatherScreen(),
-        ),
-      );
-      timer.cancel();
-    });
+    // timer = Timer.periodic(Duration(seconds: 6), (timer) {
+    //   // ignore: avoid_print
+    //
+    //   Navigator.of(context).pushReplacement(
+    //     MaterialPageRoute(
+    //       builder: (context) => WeatherScreen(),
+    //     ),
+    //   );
+    //   timer.cancel();
+    // });
+    checkInternet();
   }
+  Future<void> checkInternet() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      // If no internet, show a dialog to allow internet access
+      showNoInternetDialog();
+    } else {
+      // If internet is available, start the timer for SplashScreen
+      timer = Timer.periodic(const Duration(seconds: 6), (timer) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => WeatherScreen(),
+          ),
+        );
+        timer.cancel();
+      });
+    }
+  }
+
+  void showNoInternetDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("No Internet"),
+          content: const Text("Please allow internet access to use this app."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                // Optionally, you can open the device's internet settings here
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {

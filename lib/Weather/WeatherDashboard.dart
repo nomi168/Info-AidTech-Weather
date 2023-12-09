@@ -644,199 +644,204 @@ class _WeatherForerestState extends State<WeatherForerest> {
                               return Card(
                                   shadowColor: Colors.purpleAccent,
                                   elevation: 10,
-                                  child: Stack(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                7.w, 0.h, 0, 7.h),
-                                            child: Image.network(
-                                              'https://cdn-icons-png.flaticon.com/512/4052/4052984.png',
-                                              height: 9.h,
-                                            ),
-                                          ),
-                                          Column(
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsets.fromLTRB(
-                                                    8.w, 3.h, 0, 0.h),
-                                                child: Text(
-                                                  '${forecast['dayOfWeek']}',
-                                                  style: TextStyle(
-                                                      fontSize: 15.sp,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: Colors.purple),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.fromLTRB(
-                                                    0.w, 0.h, 0.w, 10.h),
-                                                child: Text(
-                                                  '${forecast['tempCelsius']}°C',
-                                                  style: TextStyle(
-                                                      fontSize: 20.sp,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: Colors.purple),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                10.w, 0.h, 0.w, 0.h),
-                                            child: Text(
-                                              '${forecast['description']}',
-                                              style: TextStyle(
-                                                  fontSize: 10.sp,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.purple),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding:
-                                            EdgeInsets.fromLTRB(0, 13.h, 0, 0),
-                                        child: Row(
+                                  child: GestureDetector(
+                                    child: Stack(
+                                      children: [
+                                        Row(
                                           children: [
-                                            Expanded(
-                                              child: Column(
-                                                children: [
-                                                  Padding(
-                                                      padding:
-                                                          EdgeInsets.fromLTRB(
-                                                              0.w, 1.h, 0, 0),
-                                                      child: Image.network(
-                                                        'https://cdn-icons-png.flaticon.com/512/173/173573.png',
-                                                        height: 5.h,
-                                                        color:
-                                                            Colors.deepPurple,
-                                                      )),
-                                                  Padding(
-                                                      padding:
-                                                          EdgeInsets.fromLTRB(
-                                                              0.w, 1.h, 0, 0),
-                                                      child: Text(
-                                                        '${forecast['airPressure']}'
-                                                        ' hPa',
-                                                        style: TextStyle(
-                                                            fontSize: 9.sp,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      )),
-                                                ],
+                                            Padding(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  7.w, 0.h, 0, 7.h),
+                                              child: Image.network(
+                                                'https://cdn-icons-png.flaticon.com/512/4052/4052984.png',
+                                                height: 9.h,
                                               ),
                                             ),
-                                            Expanded(
-                                              child: Column(
-                                                children: [
-                                                  Padding(
-                                                      padding:
-                                                          EdgeInsets.fromLTRB(
-                                                              0.w, 1.h, 0, 0),
-                                                      child: Image.network(
-                                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNUyi8lIpX9L6oN8w8gTgTKXCY3SYNCnOSqZXlko3uSwjNpMDH&s',
-                                                        height: 4.h,
-                                                      )),
-                                                  Padding(
-                                                      padding:
-                                                          EdgeInsets.fromLTRB(
-                                                              0.w, 2.h, 0, 0),
-                                                      child: Text(
-                                                        '${forecast['windSpeed'].round()}'
-                                                        'km',
-                                                        style: TextStyle(
-                                                            fontSize: 9.sp,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      )),
-                                                ],
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Column(
-                                                children: [
-                                                  Padding(
-                                                      padding:
-                                                          EdgeInsets.fromLTRB(
-                                                              0.w, 1.h, 0, 0),
-                                                      child: Image.network(
-                                                        'https://cdn-icons-png.flaticon.com/512/2938/2938122.png',
-                                                        height: 4.h,
-                                                      )),
-                                                  Padding(
-                                                      padding:
-                                                          EdgeInsets.fromLTRB(
-                                                              0.w, 2.h, 0, 0),
-                                                      child: Text(
-                                                        '${forecast['humidity'].round()}'
-                                                        '%',
-                                                        style: TextStyle(
-                                                            fontSize: 9.sp,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      ))
-                                                ],
-                                              ),
-                                            ),
-                                            Expanded(
-                                                child: Column(
+                                            Column(
                                               children: [
                                                 Padding(
-                                                    padding:
-                                                        EdgeInsets.fromLTRB(
-                                                            0.w, 1.h, 0, 0),
-                                                    child: Image.network(
-                                                      'https://play-lh.googleusercontent.com/jESOMYQucROBIKl4SAjg7MC8fUWF2cXqfG66aeEGX3vmML7aZsN8jceCU5oXu6LLuvU',
-                                                      height: 4.h,
-                                                    )),
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      8.w, 3.h, 0, 0.h),
+                                                  child: Text(
+                                                    '${forecast['dayOfWeek']}',
+                                                    style: TextStyle(
+                                                        fontSize: 15.sp,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.purple),
+                                                  ),
+                                                ),
                                                 Padding(
-                                                    padding:
-                                                        EdgeInsets.fromLTRB(
-                                                            0.w, 2.h, 0, 0),
-                                                    child: Text(
-                                                      '${forecast['realFeelCelsius'].round()}°C',
-                                                      style: TextStyle(
-                                                          fontSize: 9.sp,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    )),
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      0.w, 0.h, 0.w, 10.h),
+                                                  child: Text(
+                                                    '${forecast['tempCelsius']}°C',
+                                                    style: TextStyle(
+                                                        fontSize: 20.sp,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.purple),
+                                                  ),
+                                                ),
                                               ],
-                                            )),
-                                            Expanded(
-                                                child: Column(
-                                              children: [
-                                                Padding(
-                                                    padding:
-                                                        EdgeInsets.fromLTRB(
-                                                            0.w, 1.h, 0, 0),
-                                                    child: Image.network(
-                                                      'https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather07-512.png',
-                                                      height: 4.h,
-                                                    )),
-                                                Padding(
-                                                    padding:
-                                                        EdgeInsets.fromLTRB(
-                                                            0.w, 2.h, 0, 0),
-                                                    child: Text(
-                                                      '${forecast['precipitation'].round()}%',
-                                                      style: TextStyle(
-                                                          fontSize: 9.sp,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    )),
-                                              ],
-                                            )),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  10.w, 0.h, 0.w, 0.h),
+                                              child: Text(
+                                                '${forecast['description']}',
+                                                style: TextStyle(
+                                                    fontSize: 10.sp,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.purple),
+                                              ),
+                                            ),
                                           ],
                                         ),
-                                      )
-                                    ],
+                                        Padding(
+                                          padding: EdgeInsets.fromLTRB(
+                                              0, 13.h, 0, 0),
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: Column(
+                                                  children: [
+                                                    Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                0.w, 1.h, 0, 0),
+                                                        child: Image.network(
+                                                          'https://cdn-icons-png.flaticon.com/512/173/173573.png',
+                                                          height: 5.h,
+                                                          color:
+                                                              Colors.deepPurple,
+                                                        )),
+                                                    Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                0.w, 1.h, 0, 0),
+                                                        child: Text(
+                                                          '${forecast['airPressure']}'
+                                                          ' hPa',
+                                                          style: TextStyle(
+                                                              fontSize: 9.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                        )),
+                                                  ],
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: Column(
+                                                  children: [
+                                                    Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                0.w, 1.h, 0, 0),
+                                                        child: Image.network(
+                                                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNUyi8lIpX9L6oN8w8gTgTKXCY3SYNCnOSqZXlko3uSwjNpMDH&s',
+                                                          height: 4.h,
+                                                        )),
+                                                    Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                0.w, 2.h, 0, 0),
+                                                        child: Text(
+                                                          '${forecast['windSpeed'].round()}'
+                                                          'km',
+                                                          style: TextStyle(
+                                                              fontSize: 9.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                        )),
+                                                  ],
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: Column(
+                                                  children: [
+                                                    Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                0.w, 1.h, 0, 0),
+                                                        child: Image.network(
+                                                          'https://cdn-icons-png.flaticon.com/512/2938/2938122.png',
+                                                          height: 4.h,
+                                                        )),
+                                                    Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                0.w, 2.h, 0, 0),
+                                                        child: Text(
+                                                          '${forecast['humidity'].round()}'
+                                                          '%',
+                                                          style: TextStyle(
+                                                              fontSize: 9.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                        ))
+                                                  ],
+                                                ),
+                                              ),
+                                              Expanded(
+                                                  child: Column(
+                                                children: [
+                                                  Padding(
+                                                      padding:
+                                                          EdgeInsets.fromLTRB(
+                                                              0.w, 1.h, 0, 0),
+                                                      child: Image.network(
+                                                        'https://play-lh.googleusercontent.com/jESOMYQucROBIKl4SAjg7MC8fUWF2cXqfG66aeEGX3vmML7aZsN8jceCU5oXu6LLuvU',
+                                                        height: 4.h,
+                                                      )),
+                                                  Padding(
+                                                      padding:
+                                                          EdgeInsets.fromLTRB(
+                                                              0.w, 2.h, 0, 0),
+                                                      child: Text(
+                                                        '${forecast['realFeelCelsius'].round()}°C',
+                                                        style: TextStyle(
+                                                            fontSize: 9.sp,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      )),
+                                                ],
+                                              )),
+                                              Expanded(
+                                                  child: Column(
+                                                children: [
+                                                  Padding(
+                                                      padding:
+                                                          EdgeInsets.fromLTRB(
+                                                              0.w, 1.h, 0, 0),
+                                                      child: Image.network(
+                                                        'https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather07-512.png',
+                                                        height: 4.h,
+                                                      )),
+                                                  Padding(
+                                                      padding:
+                                                          EdgeInsets.fromLTRB(
+                                                              0.w, 2.h, 0, 0),
+                                                      child: Text(
+                                                        '${forecast['precipitation'].round()}%',
+                                                        style: TextStyle(
+                                                            fontSize: 9.sp,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      )),
+                                                ],
+                                              )),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    onTap: () {},
                                   ));
                             },
                             gridDelegate:
