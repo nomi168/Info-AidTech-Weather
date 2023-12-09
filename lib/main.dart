@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -36,6 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // });
     checkInternet();
   }
+
   Future<void> checkInternet() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
@@ -44,12 +47,17 @@ class _SplashScreenState extends State<SplashScreen> {
     } else {
       // If internet is available, start the timer for SplashScreen
       timer = Timer.periodic(const Duration(seconds: 6), (timer) {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => WeatherScreen(),
-          ),
-        );
-        timer.cancel();
+        // Check if the timer is still active
+        if (timer.isActive) {
+          // Cancel the timer before navigating to the WeatherScreen
+          timer.cancel();
+
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => WeatherScreen(),
+            ),
+          );
+        }
       });
     }
   }
@@ -58,23 +66,29 @@ class _SplashScreenState extends State<SplashScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text("No Internet"),
-          content: const Text("Please allow internet access to use this app."),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                // Optionally, you can open the device's internet settings here
-              },
-              child: const Text("OK"),
-            ),
-          ],
+        return WillPopScope(
+          onWillPop: () async {
+            // Disable the default behavior of the back button
+            return false;
+          },
+          child: AlertDialog(
+            title: const Text("No Internet"),
+            content:
+                const Text("Please allow internet access to use this app."),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  // Optionally, you can open the device's internet settings here
+                },
+                child: const Text("OK"),
+              ),
+            ],
+          ),
         );
       },
     );
   }
-
 
   @override
   Widget build(BuildContext context) {

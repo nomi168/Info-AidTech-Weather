@@ -65,11 +65,15 @@ class _WeatherForerestState extends State<WeatherForerest> {
   double pre = 0;
   int speed = 0;
   String _weatherData1 = '';
-  Future<void> _fetchWeatherData(String location) async {
+
+  Future<void> _fetchWeatherData(String location, {bool isCity = true}) async {
     const apiKey =
         '6ae533efe88fc31019f4240d790de2ee'; // Replace with your OpenWeatherMap API key
-    final currentWeatherUrl =
-        'https://api.openweathermap.org/data/2.5/weather?q=$location&appid=$apiKey';
+    final baseUrl = isCity
+        ? 'https://api.openweathermap.org/data/2.5/weather?q=$location'
+        : 'https://api.openweathermap.org/data/2.5/weather?zip=$location';
+
+    final currentWeatherUrl = '$baseUrl&appid=$apiKey';
 
     try {
       final currentWeatherResponse =
@@ -138,7 +142,7 @@ class _WeatherForerestState extends State<WeatherForerest> {
             return AlertDialog(
               title: Text('Error'),
               content: Text(
-                  'Invalid location. Please enter a valid your City name.'),
+                  'Invalid location. Please enter a valid city name or zip code.'),
               actions: [
                 TextButton(
                   onPressed: () {
@@ -617,7 +621,7 @@ class _WeatherForerestState extends State<WeatherForerest> {
                                   ),
                                 ),
                                 onTap: () {
-                                  Navigator.of(context).pushReplacement(
+                                  Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) => NextDays(
                                           tempCelsius1: tempCelsius1,
