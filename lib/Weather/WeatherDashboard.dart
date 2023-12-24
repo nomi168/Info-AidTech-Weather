@@ -68,7 +68,7 @@ class _WeatherForerestState extends State<WeatherForerest> {
 
   Future<void> _fetchWeatherData(String location, {bool isCity = true}) async {
     const apiKey =
-        '6ae533efe88fc31019f4240d790de2ee'; // Replace with your OpenWeatherMap API key
+        ''; // Replace with your OpenWeatherMap API key
     final baseUrl = isCity
         ? 'https://api.openweathermap.org/data/2.5/weather?q=$location'
         : 'https://api.openweathermap.org/data/2.5/weather?zip=$location';
@@ -174,8 +174,7 @@ class _WeatherForerestState extends State<WeatherForerest> {
   List dailyForecasts = [];
 
   Future<void> _fetchWeatherData1(String location) async {
-    const apiKey = '6ae533efe88fc31019f4240d790de2ee';
-    final forecastUrl =
+    const apiKey = ''; 
         'https://api.openweathermap.org/data/2.5/forecast?q=$location&appid=$apiKey';
 
     try {
